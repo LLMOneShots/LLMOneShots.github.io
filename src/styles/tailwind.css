@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@layer base {
+  p + p {
+    @apply mt-4;
+  }
+}
+
+@keyframes text-splash {
+  0%   { background-position:   0% 50%; }
+  8%   { background-position:   0% 50%; }   /* pause */
+  14%  { background-position:  60% 50%; }   /* burst */
+  22%  { background-position:  60% 50%; }   /* pause */
+  31%  { background-position: 100% 50%; }   /* burst */
+  48%  { background-position: 100% 50%; }   /* pause */
+  55%  { background-position:  20% 50%; }   /* snap back */
+  70%  { background-position:  20% 50%; }   /* pause */
+  78%  { background-position:  80% 50%; }   /* burst */
+  100% { background-position: 100% 50%; }
+}
+
+@utility animate-text-splash {
+  background-image: linear-gradient(
+    45deg,
+    theme(colors.indigo.400),
+    theme(colors.fuchsia.500),
+    theme(colors.cyan.400)
+  );
+  background-size: 300% 300%;
+  background-clip: text;
+  -webkit-background-clip: text; /* Safari still needs this */
+  color: transparent;
+  animation: text-splash 18s infinite;
+}
+
+.hder {
+  @apply text-4xl/12 md:text-6xl/20 pl-2 md:pl-0 mt-8 mb-4 font-semibold underline underline-offset-8 decoration-wavy;
+  @apply animate-text-splash;
+}
+
+.pgph {
+  @apply text-2xl/10 pl-4 md:max-w-3xl font-medium;
+}
+
+.ost {
+  @apply list-decimal pl-6 p-4;
+}
+
+.ust {
+  @apply list-disc pl-6 mt-4;
+}
+
+.hlght {
+  @apply font-semibold;
+}
