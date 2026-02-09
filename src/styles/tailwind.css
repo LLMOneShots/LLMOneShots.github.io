@@ -6,6 +6,53 @@
   }
 }
 
+@utility underline-wave {
+  --wave-h: 0.30em;
+  --wave-gap: 0.06em;
+
+  display: inline-grid;
+  grid-template-rows: auto calc(var(--wave-h) + var(--wave-gap));
+  text-decoration: none;
+  line-height: 1; /* keep it sane */
+}
+
+@utility underline-wave {
+  &::after{
+    content: "";
+    grid-row: 2;
+    align-self: start;
+
+    height: var(--wave-h);
+    margin-top: var(--wave-gap);
+
+    background-image: linear-gradient(
+      45deg,
+      theme(colors.indigo.400),
+      theme(colors.fuchsia.500),
+      theme(colors.cyan.400)
+    );
+    background-size: 300% 300%;
+    animation: text-splash 18s infinite;
+
+    /* wave mask */
+    -webkit-mask-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='none'>\
+<path d='M0 6 Q 7.5 0 15 6 T 30 6 T 45 6 T 60 6 T 75 6 T 90 6 T 105 6 T 120 6' fill='none' stroke='black' stroke-width='4' stroke-linecap='round'/>\
+</svg>");
+    -webkit-mask-size: 120px 12px;
+    -webkit-mask-repeat: repeat-x;
+
+            mask-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='none'>\
+<path d='M0 6 Q 7.5 0 15 6 T 30 6 T 45 6 T 60 6 T 75 6 T 90 6 T 105 6 T 120 6' fill='none' stroke='black' stroke-width='4' stroke-linecap='round'/>\
+</svg>");
+    mask-size: 120px 12px;
+    mask-repeat: repeat-x;
+
+    pointer-events: none;
+  }
+}
+
 @keyframes text-splash {
   0%   { background-position:   0% 50%; }
   8%   { background-position:   0% 50%; }   /* pause */
@@ -28,13 +75,16 @@
   );
   background-size: 300% 300%;
   background-clip: text;
-  -webkit-background-clip: text; /* Safari still needs this */
+  -webkit-background-clip: text;
   color: transparent;
+  -webkit-text-fill-color: transparent;
   animation: text-splash 18s infinite;
+  will-change: background-position;
 }
 
 .hder {
-  @apply text-4xl/12 md:text-6xl/20 pl-2 pr-2 md:pl-0 md:pr-0 mt-8 mb-4 font-semibold underline underline-offset-8 decoration-wavy;
+  @apply text-4xl/12 md:text-6xl/20 pl-2 pr-2 md:pl-0 md:pr-0 mt-8 mb-4 font-semibold underline underline-offset-8;
+  @apply underline-wave;
   @apply animate-text-splash;
 }
 
