@@ -53,3 +53,7 @@
 .hlght {
   @apply font-semibold;
 }
+
+.lnk {
+  @apply hover:font-semibold underline underline-offset-4;
+}
