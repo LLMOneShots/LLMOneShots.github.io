@@ -34,12 +34,12 @@
 }
 
 .hder {
-  @apply text-4xl/12 md:text-6xl/20 pl-2 md:pl-0 mt-8 mb-4 font-semibold underline underline-offset-8 decoration-wavy;
+  @apply text-4xl/12 md:text-6xl/20 pl-2 pr-2 md:pl-0 md:pr-0 mt-8 mb-4 font-semibold underline underline-offset-8 decoration-wavy;
   @apply animate-text-splash;
 }
 
 .pgph {
-  @apply text-2xl/10 pl-4 md:max-w-3xl font-medium;
+  @apply text-2xl/10 pl-4 pr-4 md:max-w-3xl font-medium;
 }
 
 .ost {
